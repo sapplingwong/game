@@ -1,0 +1,91 @@
+from random import randint
+
+# 建立一個List，包含剪刀、石頭、布
+move = ["剪刀", "石頭", "布","蜥蜴","史巴克?"]
+
+# 用亂數設定電腦的出拳
+# computer = move[randint(0,2)]
+
+# 預設玩家沒有出拳
+player = False
+
+# 當使用者沒有出拳時，讓使用者輸入想要出的拳
+while player == False:
+
+    # 請使用者出拳
+    print("石頭, 布, 剪刀,蜥蜴,史巴克")
+    player = input("你出：")
+
+    computer = move[randint(0, 4)]
+    # 顯示電腦出拳
+    print("電腦出： " + computer)
+
+    # 如果出一樣的 => 平手  *請注意：這邊已經把所有平手篩選掉了，下面就不會有平手了
+    if player == computer:
+        print("平手!")
+    # 如果玩家出石頭
+    elif player == "石頭":
+        # 如果電腦出布 => 玩家輸了
+        if computer == "布":
+            print("你贏了!", player, "砸壞了", computer)
+        if computer == "剪刀":
+            print("you loss!", player, "砸壞了", computer)
+        if computer == "蜥蜴":
+            print("you win!", player,"砸死", computer)
+        if computer == "史巴克":
+            print("You loss", computer, "融化", player)
+
+    # 如果玩家出布
+    elif player == "布":
+        # 如果電腦出剪刀 => 玩家輸了
+        if computer == "剪刀":
+            print("你輸了!", computer, "剪掉", player)
+        # 不然 => 玩家贏了
+        if computer  == "石頭":
+            print("你贏了!", player, "包住", computer)
+        if computer  == "蜥蜴":
+            print ()
+        if computer == "史巴克":
+            print()
+    # 如果玩家出剪刀
+    elif player == "剪刀":
+        # 如果電腦出石頭 => 玩家輸了
+        if computer == "石頭":
+            print("你輸了...", computer, "砸壞了", player)
+        # 不然 => 玩家贏了
+        else:
+            print("你贏了!", player, "剪掉", computer)
+
+     #if player choose 蜥蜴
+    elif player == "蜥蜴":
+        if computer == "史巴克":
+            print("you win!", player, "毒死" , computer)
+        # if computer 石頭
+        if computer == "石頭":
+            print("you lost!",computer, "砸死", player)
+        if computer == "剪刀":
+            print ("you lost!", computer,"斬首", player)
+        if computer == "布":
+             print("You win!",player, "吃掉", computer)
+
+    # if player choose 史巴克
+    elif player == "史巴克":
+        if computer == "蜥蜴":
+            print("you loss!", computer, "毒死" , player)
+        # if computer 石頭
+        if computer == "石頭":
+            print("you Win!",player, "融化", computer)
+        if computer == "剪刀":
+            print ("you win!", player,"踩碎", computer)
+        if computer == "布":
+             print("You loss!",computer, "證明不存在", player)
+
+
+    # 不然就表示，輸入錯誤，或來亂的
+    else:
+        # 告訴使用者，你輸入錯誤了
+        print("嗶嗶嗶～只能輸入 剪刀 石頭 布 唷")
+    # 如果想讓使用者繼續玩，就是False，如果要讓程式直接結束，設為True
+    player = False
+    # 重新設定電腦出拳
+    # computer = move[randint(0,2)]
